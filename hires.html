@@ -4,6 +4,7 @@
 	<title>这可能是地球上第二美的h5</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Exo:100" rel="stylesheet">
 	<style>
 		body {
       background-image: url("hires/bg.jpg");
@@ -33,17 +34,18 @@
         // scene and camera
         scene = new THREE.Scene();
         camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
-        camera.position.z = 160;
+				camera.position.y = 30;
+        camera.position.z = 35;
 
         // Earth terrain
-        var earth_texture = new THREE.TextureLoader().load('hires/earth.jpg');
-        var earth_bump = new THREE.TextureLoader().load("hires/bump.jpg");
+        var earth_texture  = new THREE.TextureLoader().load('hires/earth.jpg');
+        var earth_bump     = new THREE.TextureLoader().load("hires/bump.jpg");
         var earth_specular = new THREE.TextureLoader().load("hires/spec.png");
-				var earth_normal = new THREE.TextureLoader().load("hires/normal.tif");
+				var earth_normal   = new THREE.TextureLoader().load("hires/normal.tif");
         var earth_geometry = new THREE.SphereGeometry(30, 32, 32);
         var earth_material = new THREE.MeshPhongMaterial({
-            shininess   : 20,
-            bumpScale   : 1,
+            shininess   : 30,
+            bumpScale   : 0.6,
             map         : earth_texture,
             bumpMap     : earth_bump,
             specularMap : earth_specular,
@@ -54,7 +56,7 @@
 
         // Earth cloud
        var cloud_texture = new THREE.TextureLoader().load('tx/cloud.png');
-       var cloud_geometry = new THREE.SphereGeometry(31, 32, 32);
+       var cloud_geometry = new THREE.SphereGeometry(30.5, 32, 32);
 			 var cloud_material = new THREE.MeshBasicMaterial({
 					 shininess   : 10,
 					 map         : cloud_texture,
@@ -66,7 +68,7 @@
 
         // point light (upper left)
         pointLight = new THREE.PointLight(0xffffff);
-        pointLight.position.set(-400, 100, 150);
+        pointLight.position.set(0, 100, 150);
         scene.add (pointLight);
 
         // ambient light
@@ -89,8 +91,11 @@
 
     function animate() {
         requestAnimationFrame(animate);
-        earth.rotation.y += 0.001;
-        cloud.rotation.y += 0.001;
+				earth.rotation.x += 0.001;
+				cloud.rotation.x += 0.001;
+				cloud.rotation.y += 0.001;
+        // earth.rotation.y += 0.001;
+        // cloud.rotation.y += 0.001;
         renderer.render(scene, camera);
     }
 

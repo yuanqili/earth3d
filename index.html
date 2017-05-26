@@ -6,14 +6,19 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<style>
 		body {
-            background-image: url("tx/bg.jpeg");
-            background-position: center center;
-            overflow: hidden;
+      background-image: url("tx/bg.jpeg");
+      background-position: center center;
+      overflow: hidden;
 			background-size: cover;
 		}
 	</style>
 </head>
 <body>
+
+<audio controls autoplay hidden>
+	<source src="music/DayOne.mp3">
+</audio>
+
 <script src="js/three.min.js"></script>
 <script>
     var camera, scene, renderer;
@@ -82,8 +87,8 @@
 
     function animate() {
         requestAnimationFrame(animate);
-        earth.rotation.y += 0.005;
-        cloud.rotation.y += 0.005;
+        earth.rotation.y += 0.001;
+        cloud.rotation.y += 0.001;
         renderer.render(scene, camera);
     }
 

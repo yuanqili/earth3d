@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<style>
 		body {
-            background-image: url("tencent_texture/background.jpeg");
+            background-image: url("tx/bg.jpeg");
             background-position: center center;
             overflow: hidden;
 			background-size: cover;
@@ -31,9 +31,9 @@
         camera.position.z = 160;
 
         // Earth terrain
-        var earth_texture = new THREE.TextureLoader().load('hires/earth.jpg');
-        var earth_bump = new THREE.TextureLoader().load("hires/bump.jpg");
-        var earth_specular = new THREE.TextureLoader().load("hires/spec.png");
+        var earth_texture = new THREE.TextureLoader().load('tx/earth.jpeg');
+        var earth_bump = new THREE.TextureLoader().load("tx/bump.jpeg");
+        var earth_specular = new THREE.TextureLoader().load("tx/spec.jpeg");
         var earth_geometry = new THREE.SphereGeometry(30, 32, 32);
         var earth_material = new THREE.MeshPhongMaterial({
             shininess   : 40,
@@ -46,13 +46,13 @@
         scene.add(earth);
 
         // Earth cloud
-       var cloud_texture = new THREE.TextureLoader().load('tencent_texture/earth_cloud.png');
+       var cloud_texture = new THREE.TextureLoader().load('tx/cloud.png');
        var cloud_geometry = new THREE.SphereGeometry(31, 32, 32);
 			 var cloud_material = new THREE.MeshBasicMaterial({
 					 shininess   : 10,
 					 map         : cloud_texture,
 					 transparent : true,
-					 opacity     : 0.7
+					 opacity     : 0.8
 			 });
        cloud = new THREE.Mesh(cloud_geometry, cloud_material);
        scene.add(cloud);

@@ -31,32 +31,35 @@
         camera.position.z = 160;
 
         // Earth terrain
-        var earth_texture = new THREE.TextureLoader().load('tencent_texture/earth.jpeg');
-        var earth_bump = new THREE.TextureLoader().load("tencent_texture/earth_bump.jpeg");
-        var earth_specular = new THREE.TextureLoader().load("tencent_texture/earth_spec.jpeg");
-        var earth_normal = new THREE.TextureLoader().load("img/earthnormal1k.png");
+        var earth_texture = new THREE.TextureLoader().load('hires/earth.jpg');
+        var earth_bump = new THREE.TextureLoader().load("hires/bump.jpg");
+        var earth_specular = new THREE.TextureLoader().load("hires/spec.png");
         var earth_geometry = new THREE.SphereGeometry(30, 32, 32);
         var earth_material = new THREE.MeshPhongMaterial({
-            shininess   : 20,
-            bumpScale   : 0.8,
+            shininess   : 40,
+            bumpScale   : 1,
             map         : earth_texture,
             bumpMap     : earth_bump,
-            specularMap : earth_specular,
-            normalMap   : earth_normal
+            specularMap : earth_specular
         });
         earth = new THREE.Mesh(earth_geometry, earth_material);
         scene.add(earth);
 
         // Earth cloud
-        var cloud_texture = new THREE.TextureLoader().load('tencent_texture/earth_cloud.png');
-        var cloud_geometry = new THREE.SphereGeometry(31, 32, 32);
-        var cloud_material = new THREE.MeshBasicMaterial({map: cloud_texture, transparent: true, opacity: 0.9});
-        cloud = new THREE.Mesh(cloud_geometry, cloud_material);
-        scene.add(cloud);
+       var cloud_texture = new THREE.TextureLoader().load('tencent_texture/earth_cloud.png');
+       var cloud_geometry = new THREE.SphereGeometry(31, 32, 32);
+			 var cloud_material = new THREE.MeshBasicMaterial({
+					 shininess   : 10,
+					 map         : cloud_texture,
+					 transparent : true,
+					 opacity     : 0.7
+			 });
+       cloud = new THREE.Mesh(cloud_geometry, cloud_material);
+       scene.add(cloud);
 
         // point light (upper left)
         pointLight = new THREE.PointLight(0xffffff);
-        pointLight.position.set(-400, 100, 100);
+        pointLight.position.set(-400, 100, 150);
         scene.add (pointLight);
 
         // ambient light

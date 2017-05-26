@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<style>
 		body {
-            background-image: url("http://www.hiddenuniversemovie.com/wp-content/uploads/2013/06/10.-Beautiful-Nebula-HIDDEN-UNIVERSE.jpg");
+            background-image: url("tencent_texture/background.jpeg");
             background-position: center center;
             overflow: hidden;
 			background-size: cover;
@@ -31,13 +31,13 @@
         camera.position.z = 160;
 
         // Earth terrain
-        var earth_texture = new THREE.TextureLoader().load('img/earthmap1k.jpg');
-        var earth_bump = new THREE.TextureLoader().load("img/earthbump1k.jpg");
-        var earth_specular = new THREE.TextureLoader().load("img/earthspec1k.jpg");
+        var earth_texture = new THREE.TextureLoader().load('tencent_texture/earth.jpeg');
+        var earth_bump = new THREE.TextureLoader().load("tencent_texture/earth_bump.jpeg");
+        var earth_specular = new THREE.TextureLoader().load("tencent_texture/earth_spec.jpeg");
         var earth_normal = new THREE.TextureLoader().load("img/earthnormal1k.png");
         var earth_geometry = new THREE.SphereGeometry(30, 32, 32);
         var earth_material = new THREE.MeshPhongMaterial({
-            shininess   : 40,
+            shininess   : 20,
             bumpScale   : 0.8,
             map         : earth_texture,
             bumpMap     : earth_bump,
@@ -48,7 +48,7 @@
         scene.add(earth);
 
         // Earth cloud
-        var cloud_texture = new THREE.TextureLoader().load('img/cloudmap1k.png');
+        var cloud_texture = new THREE.TextureLoader().load('tencent_texture/earth_cloud.png');
         var cloud_geometry = new THREE.SphereGeometry(31, 32, 32);
         var cloud_material = new THREE.MeshBasicMaterial({map: cloud_texture, transparent: true, opacity: 0.9});
         cloud = new THREE.Mesh(cloud_geometry, cloud_material);
@@ -60,7 +60,7 @@
         scene.add (pointLight);
 
         // ambient light
-        ambientLight = new THREE.AmbientLight(0x666666);
+        ambientLight = new THREE.AmbientLight(0x222222);
         scene.add(ambientLight);
 
         // renderer
